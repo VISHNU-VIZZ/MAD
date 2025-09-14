@@ -1,23 +1,43 @@
 XML
 
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
-        android:id="@+id/textView"
-        android:text="Count: 0"
-        android:textSize="30sp"
+        android:id="@+id/textView1"
+        android:text="Thread 1 Count: 0"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:text="Thread 2 Count: 0"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:text="Thread 3 Count: 0"
+        android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>
 
 
-JAVA 
 
-package com.example.multithreadingapp;
+JAVA
+
+
+package com.example.multithreadingdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,36 +46,62 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
-    int count = 0;
+    TextView textView1, textView2, textView3;
     Handler handler = new Handler();
+
+    int count1 = 0, count2 = 0, count3 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView = findViewById(R.id.textView);
+        textView1 = findViewById(R.id.textView1);
+        textView2 = findViewById(R.id.textView2);
+        textView3 = findViewById(R.id.textView3);
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (count < 10) {
-                    count++;
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            textView.setText("Count: " + count);
-                        }
-                    });
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        // Thread 1
+        Thread thread1 = new Thread(() -> {
+            while (count1 < 10) {
+                count1++;
+                handler.post(() -> textView1.setText("Thread 1 Count: " + count1));
+                try {
+                    Thread.sleep(1000); // 1 second
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
-        thread.start();
+
+        // Thread 2
+        Thread thread2 = new Thread(() -> {
+            while (count2 < 15) {
+                count2++;
+                handler.post(() -> textView2.setText("Thread 2 Count: " + count2));
+                try {
+                    Thread.sleep(700); // faster
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Thread 3
+        Thread thread3 = new Thread(() -> {
+            while (count3 < 20) {
+                count3++;
+                handler.post(() -> textView3.setText("Thread 3 Count: " + count3));
+                try {
+                    Thread.sleep(500); // even faster
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Start all threads
+        thread1.start();
+        thread2.start();
+        thread3.start();
     }
 }
