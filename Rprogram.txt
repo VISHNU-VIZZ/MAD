@@ -1,0 +1,120 @@
+
+memory_details <- function() {
+  obj_names <- ls()                      # list all objects
+  if (length(obj_names) == 0) {
+    cat("No objects in memory.\n")
+    return()
+  }
+  
+  details <- data.frame(
+    Object = obj_names,
+    Class = sapply(obj_names, function(x) class(get(x))),
+    Type = sapply(obj_names, function(x) typeof(get(x))),
+    Size_Bytes = sapply(obj_names, function(x) object.size(get(x))),
+    Size_MB = round(sapply(obj_names, function(x) object.size(get(x)) / (1024^2)), 4),
+    stringsAsFactors = FALSE
+  )
+  
+  print(details)
+}
+
+# Call the function
+memory_details()
+
+
+
+====================
+
+
+
+
+a <- c(1,1,1)
+b <- c(2,2,2)
+c <- c(3,3,3)
+
+m1 <- cbind(a,b,c)
+
+print(m1)
+
+d <- c(4,4,4)
+e <- c(5,5,5)
+f <- c(6,6,6)
+
+m2 <- cbind(d,e,f)
+
+print(m2)
+
+print("ADD")
+add <- m1+m2
+print(add)
+
+print(“SUB”)
+sub <- m1-m2
+print(sub)
+
+print(“MUL”)
+mul <- m1 %*% m2
+
+print(mul)
+
+
+
+===============
+
+
+
+
+
+
+
+
+empty_df <- data.frame()
+print("Empty Data Frame:")
+print(empty_df)
+
+
+name <- c("Alice", "Bob", "Charlie", "David")
+age <- c(23, 25, 30, 28)
+gender <- c("F", "M", "M", "M")
+
+
+people_df <- data.frame(Name = name, Age = age, Gender = gender)
+
+
+print("Data Frame Created from Given Vectors:")
+print(people_df)
+
+
+
+
+
+
+
+===================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+values <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+
+dimensions <- c(3, 2, 2)
+
+my_array <- array(values, dim = dimensions)
+
+
+print("Array created from given values and dimensions:")
+print(my_array)
+
+
+
