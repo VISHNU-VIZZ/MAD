@@ -1,0 +1,262 @@
+
+memory_details <- function() {
+  obj_names <- ls()                      # list all objects
+  if (length(obj_names) == 0) {
+    cat("No objects in memory.\n")
+    return()
+  }
+  
+  details <- data.frame(
+    Object = obj_names,
+    Class = sapply(obj_names, function(x) class(get(x))),
+    Type = sapply(obj_names, function(x) typeof(get(x))),
+    Size_Bytes = sapply(obj_names, function(x) object.size(get(x))),
+    Size_MB = round(sapply(obj_names, function(x) object.size(get(x)) / (1024^2)), 4),
+    stringsAsFactors = FALSE
+  )
+  
+  print(details)
+}
+
+# Call the function
+memory_details()
+
+
+
+====================
+
+
+
+
+a <- c(1,1,1)
+b <- c(2,2,2)
+c <- c(3,3,3)
+
+m1 <- cbind(a,b,c)
+
+print(m1)
+
+d <- c(4,4,4)
+e <- c(5,5,5)
+f <- c(6,6,6)
+
+m2 <- cbind(d,e,f)
+
+print(m2)
+
+print("ADD")
+add <- m1+m2
+print(add)
+
+print(“SUB”)
+sub <- m1-m2
+print(sub)
+
+print(“MUL”)
+mul <- m1 %*% m2
+
+print(mul)
+
+
+
+===============
+
+
+
+
+
+
+
+
+empty_df <- data.frame()
+print("Empty Data Frame:")
+print(empty_df)
+
+
+name <- c("Alice", "Bob", "Charlie", "David")
+age <- c(23, 25, 30, 28)
+gender <- c("F", "M", "M", "M")
+
+
+people_df <- data.frame(Name = name, Age = age, Gender = gender)
+
+
+print("Data Frame Created from Given Vectors:")
+print(people_df)
+
+
+
+
+
+
+
+===================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+values <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+
+dimensions <- c(3, 2, 2)
+
+my_array <- array(values, dim = dimensions)
+
+
+print("Array created from given values and dimensions:")
+print(my_array)
+
+
+
+
+
+
+
+========================================
+# Creating heterogeneous data
+char_vec <- c("Apple", "Banana", "Orange")
+num_vec <- c(10, 20, 30, 40)
+log_vec <- c(TRUE, FALSE, TRUE)
+
+
+# Creating a list
+my_list <- list(
+  Fruits = char_vec,
+  Numbers = num_vec,
+  Flags = log_vec
+)
+
+
+# Display list
+print(my_list)
+
+
+
+
+
+
+================================================
+
+
+
+
+
+
+# String Manipulation Examples
+text <- "Hello R Programming"
+
+
+# Convert to upper case
+upper_text <- toupper(text)
+
+
+# Convert to lower case
+lower_text <- tolower(text)
+
+
+# Extract substring
+sub_text <- substr(text, 1, 5)   # "Hello"
+
+
+# Replace text
+replaced_text <- sub(text, "R", "Data", text)
+
+
+# Concatenate strings
+joined_text <- paste("Welcome", "to", "R", sep = " ")
+
+
+# Split string
+split_text <- strsplit(text, " ")
+
+
+# Display results
+print(upper_text)
+print(lower_text)
+print(sub_text)
+print(replaced_text)
+print(joined_text)
+print(split_text)
+
+
+
+
+============================================
+
+
+# Creating a data frame
+students <- data.frame(
+  Name = c("Vishnu", "Arun", "Kavi"),
+  Age = c(21, 22, 23),
+  Marks = c(85, 90, 88)
+)
+
+
+# Save data frame to a file (CSV format)
+write.csv(students, "students_info.csv", row.names = FALSE)
+
+
+# Read the file and display its content
+data_from_file <- read.csv("students_info.csv")
+print(data_from_file)
+
+
+
+
+===================================================
+
+
+# Data
+values <- c(20, 30, 10, 25, 15)
+labels <- c("A", "B", "C", "D", "E")
+
+
+# Pie Chart
+pie(values, labels, main = "Sample Pie Chart", col = rainbow(length(values)))
+
+
+# Bar Chart
+barplot(values, names.arg = labels, 
+        main = "Sample Bar Chart",
+        xlab = "Categories",
+        ylab = "Values",
+        col = "skyblue")
+
+
+
+
+
+
+======================================================
+
+
+
+
+# Marks of 5 subjects
+subjects <- c("Tamil", "English", "Maths", "Science", "CS")
+marks <- c(88, 76, 95, 89, 92)
+
+
+# Create bar plot
+barplot(
+  marks,
+  names.arg = subjects,
+  main = "Subject Marks",
+  xlab = "Subjects",
+  ylab = "Marks Scored",
+  col = "lightgreen",
+  border = "black"
+)
+===========================================
+
+
