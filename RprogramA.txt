@@ -10,34 +10,27 @@ age <- as.numeric(age)
 # Display the output
 cat("Your Name is:", name, "\n")
 cat("Your Age is:", age, "\n")
+===============================
+22222222222222222222222222
+a <- 10
+b <- c(1, 2, 3, 4, 5)
+c <- "Hello R"
 
-memory_details <- function() {
-  obj_names <- ls()                      # list all objects
-  if (length(obj_names) == 0) {
-    cat("No objects in memory.\n")
-    return()
-  }
+obj_names <- ls()
 
-
-
-=====================================================
-  
+if (length(obj_names) == 0) {
+  cat("No objects in memory.\n")
+} else {
   details <- data.frame(
     Object = obj_names,
-    Class = sapply(obj_names, function(x) class(get(x))),
-    Type = sapply(obj_names, function(x) typeof(get(x))),
-    Size_Bytes = sapply(obj_names, function(x) object.size(get(x))),
-    Size_MB = round(sapply(obj_names, function(x) object.size(get(x)) / (1024^2)), 4),
+    Class = sapply(obj_names, function(n) class(get(n))),
+    Type = sapply(obj_names, function(n) typeof(get(n))),
+    Size_Bytes = sapply(obj_names, function(n) object.size(get(n))),
     stringsAsFactors = FALSE
   )
   
   print(details)
 }
-
-# Call the function
-memory_details()
-
-
 
 ====================
 3333333333333333
@@ -278,3 +271,4 @@ text(
 )
 
 =========================================
+
