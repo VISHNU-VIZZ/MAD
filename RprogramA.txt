@@ -1,13 +1,9 @@
-# Get user input for name
 name <- readline(prompt = "Enter your name: ")
 
-# Get user input for age
 age <- readline(prompt = "Enter your age: ")
 
-# Convert age to numeric
 age <- as.numeric(age)
 
-# Display the output
 cat("Your Name is:", name, "\n")
 cat("Your Age is:", age, "\n")
 ===============================
@@ -271,4 +267,5 @@ text(
 )
 
 =========================================
+
 
