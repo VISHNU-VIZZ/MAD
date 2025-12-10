@@ -40,8 +40,7 @@ memory_details()
 
 
 ====================
-
-
+3333333333333333
 
 
 a <- c(1,1,1)
@@ -76,10 +75,7 @@ print(mul)
 
 
 ===============
-
-
-
-
+4444444444444444
 
 
 
@@ -102,22 +98,8 @@ print(people_df)
 
 
 
-
-
-
-
 ===================
-
-
-
-
-
-
-
-
-
-
-
+5555555555555555555555
 
 
 
@@ -133,19 +115,16 @@ print("Array created from given values and dimensions:")
 print(my_array)
 
 
-
-
-
-
-
 ========================================
-# Creating heterogeneous data
+666666666666666666666666666
+
+
+
 char_vec <- c("Apple", "Banana", "Orange")
 num_vec <- c(10, 20, 30, 40)
 log_vec <- c(TRUE, FALSE, TRUE)
 
 
-# Creating a list
 my_list <- list(
   Fruits = char_vec,
   Numbers = num_vec,
@@ -153,50 +132,33 @@ my_list <- list(
 )
 
 
-# Display list
 print(my_list)
 
 
-
-
-
-
 ================================================
+7777777777777777777777
 
 
-
-
-
-
-# String Manipulation Examples
 text <- "Hello R Programming"
 
 
-# Convert to upper case
 upper_text <- toupper(text)
 
 
-# Convert to lower case
 lower_text <- tolower(text)
 
-
-# Extract substring
 sub_text <- substr(text, 1, 5)   # "Hello"
 
 
-# Replace text
 replaced_text <- sub(text, "R", "Data", text)
 
 
-# Concatenate strings
 joined_text <- paste("Welcome", "to", "R", sep = " ")
 
 
-# Split string
 split_text <- strsplit(text, " ")
 
 
-# Display results
 print(upper_text)
 print(lower_text)
 print(sub_text)
@@ -205,12 +167,9 @@ print(joined_text)
 print(split_text)
 
 
-
-
 ============================================
+88888888888888888888888
 
-
-# Creating a data frame
 students <- data.frame(
   Name = c("Vishnu", "Arun", "Kavi"),
   Age = c(21, 22, 23),
@@ -218,30 +177,25 @@ students <- data.frame(
 )
 
 
-# Save data frame to a file (CSV format)
 write.csv(students, "students_info.csv", row.names = FALSE)
 
 
-# Read the file and display its content
 data_from_file <- read.csv("students_info.csv")
 print(data_from_file)
 
 
-
-
 ===================================================
+999999999999999999999999999
 
 
-# Data
 values <- c(20, 30, 10, 25, 15)
 labels <- c("A", "B", "C", "D", "E")
 
 
-# Pie Chart
 pie(values, labels, main = "Sample Pie Chart", col = rainbow(length(values)))
 
 
-# Bar Chart
+
 barplot(values, names.arg = labels, 
         main = "Sample Bar Chart",
         xlab = "Categories",
@@ -249,21 +203,14 @@ barplot(values, names.arg = labels,
         col = "skyblue")
 
 
-
-
-
-
 ======================================================
+1111111111000000000000000
 
 
-
-
-# Marks of 5 subjects
 subjects <- c("Tamil", "English", "Maths", "Science", "CS")
 marks <- c(88, 76, 95, 89, 92)
 
 
-# Create bar plot
 barplot(
   marks,
   names.arg = subjects,
@@ -273,7 +220,61 @@ barplot(
   col = "lightgreen",
   border = "black"
 )
+
+
 ===========================================
+111111111000000111111111111
 
 
+subjects <- c("Tamil", "English", "Maths", "Science", "CS")
 
+
+marks <- c(88, 76, 95, 89, 12)
+
+
+get_grade <- function(m) {
+  if (m >= 90) {
+    return("A+ PASS")
+  } else if (m >= 80) {
+    return("A PASS")
+  } else if (m >= 70) {
+    return("B PASS")
+  } else if (m >= 60) {
+    return("C PASS")
+  } else {
+    return("D FAIL")
+  }
+}
+
+grades <- sapply(marks, get_grade)
+
+
+bp <- barplot(
+  marks,
+  names.arg = subjects,
+  main = "Subject Marks and Grades",
+  xlab = "Subjects",
+  ylab = "Marks",
+  col = "lightblue",
+  ylim = c(0, 110)
+)
+
+
+text(
+  x = bp,
+  y = marks + 5,
+  labels = grades,
+  col = "red",
+  cex = 0.8,
+  font = 1
+)
+text(
+  x = bp,
+  y = marks + 15,
+  labels = marks,
+  col = "red",
+  cex = 1,
+  font = 2
+)
+
+=========================================
